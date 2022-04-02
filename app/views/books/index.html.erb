@@ -1,8 +1,18 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
+    <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <%= @book.errors.count %>error prohibited this obj from being saved:
+        <ul>
+            <% @book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
     <div class='col-md-3'>
       <h2>User info</h2>
-      <%= render 'users/info', user: current_user %>
+      <%= render 'users/info', user: @user %>
       <h2 class="mt-3">New book</h2>
       <%= render 'form', book: @book %>
     </div>
