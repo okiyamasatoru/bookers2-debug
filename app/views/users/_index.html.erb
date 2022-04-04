@@ -7,11 +7,21 @@
     </tr>
   </thead>
   <tbody>
-    <% users.each do |user| %>
+    <% User.all.where.not(id: current_user.id).each do |user| %>
       <tr>
         <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
         <td><%= user.name %></td>
         <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
+         <% if user_signed_in? %>
+        <td>
+            <% if current_user.following?(user) %>
+              <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+            <% else %>
+              <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+            <% end %>
+        </td>
+        
+      <% end %>
       </tr>
     <% end %>
   </tbody>
