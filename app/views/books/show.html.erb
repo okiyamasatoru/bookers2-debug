@@ -21,7 +21,9 @@
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
           <% end %>
-          <td><%= render 'favorite',book: @book %></td>
+          <td id="favorite_btn_<%= @book.id %>">
+             <%= render 'favorite',book: @book %>
+          </td>
 
             <td>コメント件数：<%= @book.book_comments.count %></td>
             <% @book.book_comments.each do |book_comment| %>
