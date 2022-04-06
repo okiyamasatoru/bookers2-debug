@@ -57,3 +57,4 @@ gem 'devise'
 
 gem "pry-rails"
 gem 'jquery-rails'
+gem 'kaminari', '~> 0.17.0'
