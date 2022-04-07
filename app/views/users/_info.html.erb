@@ -17,11 +17,13 @@
   <tr>
     <th><% unless user == current_user %>
           <% if current_user.following?(user) %>
-            <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+            <p><%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %></p>
+            <p><%= link_to 'Chatを始める', chat_path(user.id) %></p>
           <% else %>
-            <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+            <p><%= link_to 'フォローする', follow_path(user.id), method: :POST %></p>
           <% end %>
-        <% end %></th>
+        <% end %>
+    </th>
   </tr>
 </table>
 
