@@ -21,6 +21,7 @@
              <%= render 'favorite',book: book %>
         </td>
         <td><%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %></td>
+        <td>閲覧数<%= book.impressions_count %></td>
       </tr>
     <% end %>
     <%= paginate books %>
